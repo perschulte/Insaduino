@@ -31,24 +31,51 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   if (Serial.available() > 0) {
+    
+    Serial.println("received serial data");
     mode = Serial.read();
-    if(mode == 1) 
-    { 
-      newMessage();
-      Serial.println("newMessage");
-      Serial.println(mode);
-    }
-    if(mode == 0) 
+    Serial.println(mode);
+    if(mode == 'm')
     {
-      blueLight();
-      Serial.println("idle");
-      Serial.println(mode);
+      mode = Serial.read();
+      if(mode == 1) 
+      { 
+        newMessage();
+        Serial.println("Status->new message");
+      }
+      if(mode == 2) 
+      { 
+        newMessage();
+        Serial.println("Status->unread mails");
+      }
+      
+      if(mode == 0) 
+      {
+        blueLight();
+        Serial.println("Status->idle");
+      }   
     }
   } else if (mode == 0) {
+    Serial.println("no serial data");
     blueLight();
+    Serial.println("Status->idle");
   }
 }
 
+boolean setMode()
+{
+  byte input[5];     //
+  int i;             //counter
+  if (Serial.available() > 0) 
+  {
+    while(Serial.available())
+    {
+      input[i]
+    }
+  } else {
+    return false;
+  }
+}
 void redLight() 
 {
   analogWrite(red, 255);
