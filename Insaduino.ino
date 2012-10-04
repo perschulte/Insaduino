@@ -2,6 +2,25 @@
 
 byte mode=0;
 
+//RGB-LED 1
+int  L1_Red    = 3;
+int  L1_Blue   = 5;
+int  L1_Green  = 6;
+
+//RGB-LED 2
+int  L2_Red    = 9;
+int  L2_Blue   = 10;
+int  L2_Green  = 11;
+
+//White-LED 1
+int L1_White   = 2;
+
+//White-LED 2
+int L2_White   = A6;
+
+//Photoresistor
+int S1_Light = A0;
+
 int red = 3;
 int green = 6;
 int blue = 5;
@@ -19,17 +38,23 @@ byte rndBlue;
 
 void setup() {                
   // initialize the digital pin as an output.
-  pinMode(red, OUTPUT);
-  pinMode(green, OUTPUT);
-  pinMode(blue, OUTPUT);
-  pinMode(white, OUTPUT);
+  pinMode(L2_White, OUTPUT);
+  //pinMode(green, OUTPUT);
+  //pinMode(blue, OUTPUT);
+  //pinMode(white, OUTPUT);
   
   Serial.begin(9600);
   randomSeed(analogRead(0));
+  digitalWrite(L2_White, HIGH);
+  
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
+  
+  //analogWrite(L1_Blue, analogRead(S1_Light));
+  analogWrite(L1_Red, analogRead(S1_Light));
+/*
   if (Serial.available() > 0) {
     
     Serial.println("received serial data");
@@ -60,6 +85,7 @@ void loop() {
     blueLight();
     Serial.println("Status->idle");
   }
+  */
 }
 
 boolean setMode()
@@ -70,7 +96,7 @@ boolean setMode()
   {
     while(Serial.available())
     {
-      input[i]
+     // input[i]
     }
   } else {
     return false;
