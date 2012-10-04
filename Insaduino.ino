@@ -77,9 +77,6 @@ void loop() {
   */
 }
 
-<<<<<<< HEAD
-=======
-
 char* readCommand()
 {
   char commandBuffer[COMMAND_BUFFER_SIZE];     //CommandBuffer
@@ -124,7 +121,6 @@ boolean setMode()
   }
 }
 
->>>>>>> parent of f7807bd... Revert "Revert "Revert "Added readCommand"""
 void redLight() 
 {
   analogWrite(red, 255);
