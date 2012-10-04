@@ -56,52 +56,25 @@ void loop() {
   analogWrite(L1_Red, analogRead(S1_Light));
 /*
   if (Serial.available() > 0) {
-    
-    Serial.println("received serial data");
     mode = Serial.read();
-    Serial.println(mode);
-    if(mode == 'm')
+    if(mode == 1) 
+    { 
+      newMessage();
+      Serial.println("newMessage");
+      Serial.println(mode);
+    }
+    if(mode == 0) 
     {
-      mode = Serial.read();
-      if(mode == 1) 
-      { 
-        newMessage();
-        Serial.println("Status->new message");
-      }
-      if(mode == 2) 
-      { 
-        newMessage();
-        Serial.println("Status->unread mails");
-      }
-      
-      if(mode == 0) 
-      {
-        blueLight();
-        Serial.println("Status->idle");
-      }   
+      blueLight();
+      Serial.println("idle");
+      Serial.println(mode);
     }
   } else if (mode == 0) {
-    Serial.println("no serial data");
     blueLight();
-    Serial.println("Status->idle");
   }
   */
 }
 
-boolean setMode()
-{
-  byte input[5];     //
-  int i;             //counter
-  if (Serial.available() > 0) 
-  {
-    while(Serial.available())
-    {
-      input[i]
-    }
-  } else {
-    return false;
-  }
-}
 void redLight() 
 {
   analogWrite(red, 255);
