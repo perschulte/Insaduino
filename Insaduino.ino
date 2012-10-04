@@ -1,4 +1,6 @@
  
+#define DEBUG 1
+#define COMMAND_BUFFER_SIZE 100
 
 byte mode=0;
 
@@ -75,6 +77,54 @@ void loop() {
   */
 }
 
+<<<<<<< HEAD
+=======
+
+char* readCommand()
+{
+  char commandBuffer[COMMAND_BUFFER_SIZE];     //CommandBuffer
+  int i=0;                     //Counter
+  
+  if(Serial.available()){
+     delay(10);
+     while( Serial.available() && i< (COMMAND_BUFFER_SIZE - 1)) {
+        commandBuffer[i++] = Serial.read();
+     }
+     commandBuffer[i++]='\0';
+  }
+
+#ifdef DEBUG
+  Serial.println("Command received:");
+  Serial.println((char*)commandBuffer);
+#endif
+
+  return commandBuffer;
+}
+
+
+
+
+
+
+
+boolean setMode()
+{
+  byte input[5];     //
+  int i;             //counter
+  if (Serial.available() > 0) 
+  {
+    while(Serial.available())
+    {
+      input[i] = Serial.read();
+    }
+    
+    
+  } else {
+    return false;
+  }
+}
+
+>>>>>>> parent of f7807bd... Revert "Revert "Revert "Added readCommand"""
 void redLight() 
 {
   analogWrite(red, 255);
